@@ -104,4 +104,49 @@ export class LinkedList {
     }
     return string + "null";
   }
+
+  insertAt(value, index) {
+    if (index < 0 || index > this.size) {
+      return undefined;
+    }
+
+    if (index === 0) {
+      this.prepend(value);
+      return;
+    }
+
+    if (index === this.size) {
+      this.append(value);
+      return;
+    }
+
+    const newNode = new Node(value);
+    const prevNode = this.at(index - 1);
+    const nextNode = prevNode.next;
+
+    newNode.next = nextNode;
+    prevNode.next = newNode;
+    this.size++;
+  }
+
+  removeAt(index) {
+    if(index < 0 || index >= this.size){
+        return undefined;
+    }
+
+    if(index === 0){
+        this.head = this.head.next;
+        this.size--;
+        return;
+    }
+
+    if(index === this.size - 1){
+        this.pop();
+        return;
+    }
+
+    const prevNode = this.at(index - 1);
+    prevNode.next = prevNode.next.next;
+    this.size--;
+  }
 }
