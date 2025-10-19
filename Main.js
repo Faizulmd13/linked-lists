@@ -5,32 +5,37 @@ const list = new LinkedList();
 list.append(10);
 list.append(20);
 list.append(30);
-
-console.log(list.toString());
+console.log("After append:", list.toString());
 
 list.prepend(5);
-console.log(list.toString());
-console.log("Head:", list.head.value);
-console.log("Tail:", list.tail.value);
+console.log("After prepend:", list.toString());
 
-console.log(list.at(2).value);
+console.log("Node at index 2:", list.at(2)?.value ?? "Not found");
 
-if (list.contains(20) !== undefined) console.log(true);
+const contains20 = list.contains(20);
+console.log("Contains 20:", contains20 ? `Yes, at index ${contains20[1]}` : "No");
 
-if (list.find(30) !== undefined) console.log(`found at ${list.find(30)[1]}`);
+const find30 = list.find(30);
+console.log("Find 30:", find30 ? `Found at index ${find30[1]}` : "Not found");
 
-list.pop();
-console.log(list.toString());
+list.insertAt(15, 2);
+console.log("After insert 15 at index 2:", list.toString());
 
-list.pop();
-console.log(list.toString());
-
-list.pop();
-console.log(list.toString());
+list.removeAt(3);
+console.log("After remove at index 3:", list.toString());
 
 list.pop();
-console.log(list.toString());
+console.log("After pop:", list.toString());
 
-console.log("Size:", list.size);
+list.pop();
+console.log("After pop:", list.toString());
+
+list.pop();
+console.log("After pop:", list.toString());
+
+list.pop();
+console.log("After pop:", list.toString());
+
+console.log("Final List size:", list.size);
 console.log("Head:", list.head);
 console.log("Tail:", list.tail);
